@@ -4,19 +4,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #1d539f;
     /* border: 2px solid black; */
 }
 .tab-container {
     height: 420px;
     width: 1000px;
     border: 2px solid black;
+    background-color: white;
+    border-radius: 20px;
 }
 
 /* Style the tab */
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    /* border: 1px solid #ccc; */
+    background-color: #ffcd69;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   
   /* Style the buttons that are used to open the tab content */
@@ -30,6 +35,7 @@
     transition: 0.3s;
     font-size: 20px;
     font-weight: 150;
+    background-color: #ffcd69;
   }
   
   /* Change background color of buttons on hover */
@@ -45,7 +51,9 @@
   /* Style the tab content */
   .tabcontent {
     display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
+    padding: 12px 30px;
+    /* border: 1px solid #ccc; */
     border-top: none;
+    font-size: 20px;
+    font-weight: 150;
   }
