@@ -50,7 +50,7 @@ body {
 }
 
 .profile-container {
-    background-color: #c0c7d1 !important;
+    background-color: #e7e9ec !important;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,7 +79,7 @@ body {
 .profile h1 {
         font-size: 50px;
         font-weight: 700;
-        color: white;
+        color: #1d539f;
 }
 
 .profile img {
