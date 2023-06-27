@@ -16,19 +16,22 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="/static/styles.css" rel="stylesheet" />
     </head>
+    {% block content %}
     <body id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top">Portfolio Site</a>
+                <a class="navbar-brand" href="/">Portfolio Site</a>
                 <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#education">Education</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Contact</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/places_visited">Trips</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -39,7 +42,7 @@
                 <!-- Masthead Avatar Image-->
                 <img class="masthead-avatar mb-5" src="assets/img/logo.jpg" alt="..." />
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Full Name</h1>
+                <h1 class="masthead-heading text-uppercase mb-0">Terrelle Tettey</h1>
                 
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
@@ -53,6 +56,7 @@
                 <p class="lead">I will add my story here shortly.</p></div>
             </div>
         </header>
+        
          <!-- Education Section-->
          <section class="page-section text-white mb-0" id="education">
             <div class="container">
@@ -213,6 +217,7 @@
                 </div>
             </div>
         </section>
+       
         <!-- Footer-->
         <footer class="footer text-center">
             <div class="container">
@@ -443,6 +448,7 @@
                 </div>
             </div>
         </div>
+        {% endblock %}
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
