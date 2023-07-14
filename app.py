@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, send_from_directory, jsonify
+from flask import Flask, request, render_template, send_from_directory, jsonify, redirect
 from peewee import *
 import os
 import datetime
@@ -50,9 +50,6 @@ TimelinePost.select().order_by(TimelinePost.created_at.desc())
         ]
     }
 
-from flask import jsonify
-from peewee import DoesNotExist
-
 @app.route('/api/timeline_post', methods=['DELETE'])
 def deleteTimelinePosts():
     try:    
@@ -67,6 +64,11 @@ def deleteTimelinePosts():
 @app.route('/')
 def index():
     return render_template('index.html')
+
+
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html', title="Timeline")
 
 
 @app.route('/places_visited')
