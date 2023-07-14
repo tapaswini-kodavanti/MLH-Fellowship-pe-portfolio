@@ -1,0 +1,90 @@
+{% extends "index.html" %}
+
+{% block content %}
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand" href="/">Portfolio Site</a>
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#education">Education</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#projects">Projects</a></li>                    
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#hobbies">Hobbies</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/#contact">Contact</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/places_visited">Trips</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/timeline">Timeline</a></li>
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Masthead-->
+    <header class="masthead bg-primary text-white text-center">
+        <div class="container d-flex align-items-center flex-column">
+            <!-- Masthead Avatar Image-->
+            <img class="masthead-avatar mb-5" src="assets/img/plane.jpg" alt="..." />
+            
+        </div>
+    </header>
+ <!-- Timeline Section-->
+ <section class="page-section portfolio" id="timeline">
+    <div class="container">
+        <!-- Timeline Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Welcome To My Timeline</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-pen"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        
+        <form id="timeline-post-form" action="/api/timeline_post" method="post" enctype="multipart/form-data">
+            <input class="form-control" type="text" id="name" name="name" placeholder="Your Name"><br>
+          
+            <input class="form-control" type="text" id="email" name="email" placeholder="Your Email"><br>
+            
+          
+            <textarea class="form-control" id="content" name="content" placeholder="Description of Post"></textarea><br>
+          
+            <button class="btn btn-primary btn-xl text-uppercase" value="submit" id="submit" type="submit">Add Post</button>
+          </form>    
+      
+        <!--List of posts--> 
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Timeline Posts</h2>
+          <!-- Icon Divider-->
+          <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-feed"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <div id="timeline-posts-container"></div>
+            
+        <script src="/static/script.js"></script>   
+        </div>
+    </div>
+</section>
+
+ <!-- Footer-->
+ <footer class="footer text-center">
+    <div class="container">
+        <div class="row">
+
+            <!-- Footer Social Icons-->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4">Connect With Me</h4>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://github.com/Terrelle"><i class="fab fa-fw fa-github"></i></a>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://www.linkedin.com/in/terrelle-tettey-79b739168/"><i class="fab fa-fw fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Copyright Section-->
+<div class="copyright py-4 text-center text-white">
+    <div class="container"><small>Copyright &copy; Your Website 2023</small></div>
+</div>
+{% endblock %}

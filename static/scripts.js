@@ -7,6 +7,64 @@
 // Scripts
 // 
 
+    // Gravatar support
+    function getGravatarURL(email){
+        const emailHash = md5(email.toLowerCase());
+        return `https://www.gravatar.com/avatar/${emailHash}`; // construct the Gravatar URL
+    }
+
+    // Function to fetch and display timeline posts
+    function fetchTimelinePosts() {
+        fetch('/api/timeline_post')
+          .then(response => response.json())
+          .then(data => {
+            const timelinePostsContainer = document.getElementById('timeline-posts-container');
+            timelinePostsContainer.innerHTML = '';
+  
+            data.timeline_posts.forEach(post => {
+              const postDiv = document.createElement('div');
+              postDiv.classList.add('timeline-post');
+              postDiv.innerHTML = `
+                <h3>${post.name}</h3>
+                <img src="${getGravatarURL(post.email)}" alt="Gravatar" />
+                <p>${post.email}</p>
+                <p>${post.content}</p>
+                <hr>
+              `;
+              timelinePostsContainer.appendChild(postDiv);
+            });
+          })
+          .catch(error => console.log(error));
+      }
+  
+      // Function to handle form submission
+      function handleFormSubmit(event) {
+        event.preventDefault();
+  
+        const form = document.getElementById('timeline-post-form');
+        const formData = new FormData(form);
+  
+        fetch('/api/timeline_post', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          form.reset();
+          fetchTimelinePosts();
+        })
+        .catch(error => console.log(error));
+      }
+  
+      // Add event listener to form submit event
+      const form = document.getElementById('timeline-post-form');
+      form.addEventListener('submit', handleFormSubmit);
+  
+      // Fetch and display initial timeline posts
+      fetchTimelinePosts();
+
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Navbar shrink function
