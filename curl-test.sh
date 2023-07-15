@@ -9,10 +9,6 @@ email=$(echo "$post" | jq -r '.email')
 content=$(echo "$post" | jq -r '.content')
 
 
-echo $name
-echo $email
-echo $content
-
 if [ "$name" != "tester" ] || [ "$email" != "tester@gmail.com" ] || [ "$content" != "testing" ]; then
     echo "Error: GET or POST endpoint failed" >&2
     exit 1
