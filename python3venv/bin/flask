@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/terrelletettey/Desktop/Resume Site/python3venv/bin/python" "$0" "$@"
+'''exec' "/Users/terrelletettey/Desktop/portfolio-site/python3venv/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
