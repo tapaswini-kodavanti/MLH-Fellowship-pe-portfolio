@@ -11045,3 +11045,31 @@ html {
 .copyright {
   background-color: #1a252f;
 }
+
+/* .container .table-container {
+  width: 100%;
+  align-items: center;
+  border: 3px;
+  border-color: coral;
+} */
+
+table {
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+th {
+  background-color: #265b8f;
+  color: white;
+  height: 50px;
+}
+
+td {
+  height: 50px;
+}
+
+tr:nth-child(even) {
+  background-color: #91c6ff;
+}

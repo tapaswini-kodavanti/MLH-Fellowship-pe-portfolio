@@ -36,6 +36,10 @@ def index():
 def places_visited():
     return render_template('places_visited.html')
 
+@app.route('/timeline')
+def timeline():
+    return render_template('timeline.html')
+
 
 @app.route('/assets/<path:path>')
 def send_static(path):
