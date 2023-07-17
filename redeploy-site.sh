@@ -1,6 +1,6 @@
-tmux kill-session
+cd MLH-Fellowship-pe-portfolio
 git fetch && git reset origin/main --hard
-tmux new-session -s my_session -d
-tmux send-keys -t my_session "source python3-virtualenv/bin/activate" Enter
-tmux send-keys -t my_session "pip install -r requirements.txt" Enter
-tmux send-keys -t my_session "flask run --host=0.0.0.0" Enter
+source python3-virtualenv/bin/activate
+pip install -r requirements.txt
+systemctl daemon-reload
+systemctl restart myportfolio
