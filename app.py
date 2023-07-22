@@ -1,18 +1,26 @@
-from flask import Flask, redirect, render_template, send_from_directory, request
+from flask import Flask, render_template, send_from_directory, request
 from peewee import *
 from playhouse.shortcuts import model_to_dict
 import os
 import datetime
+import re
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-mydb = MySQLDatabase(
-    os.getenv("MYSQL_DATABASE"),
-    user = os.getenv("MYSQL_USER"),
-    password = os.getenv("MYSQL_PASSWORD"),
-    host = os.getenv("MYSQL_HOST"),
-    port = 3306
-)
+if os.getenv("TESTING") == "true":
+    print("Running in test mode")
+    mydb = SqliteDatabase('file:memory?mode=memory&cache=shared', uri=True)
+else:
+    mydb = MySQLDatabase(
+        os.getenv("MYSQL_DATABASE"),
+        user = os.getenv("MYSQL_USER"),
+        password = os.getenv("MYSQL_PASSWORD"),
+        host = os.getenv("MYSQL_HOST"),
+        port = 3306
+    )
 
 print(mydb)
 
@@ -47,21 +55,42 @@ def send_static(path):
 
 @app.route('/api/timeline_post', methods=['POST'])
 def post_time_line_post():
-    name = request.form['name']
-    email = request.form['email']
-    content = request.form['content']
+    name = request.form.get('name')
+    email = request.form.get('email')
+    content = request.form.get('content')
+
+    
+
+    if not name:
+        return {'error': 'Invalid Name'}, 400
+    if not email:
+        return {'error': 'Invalid Email'}, 400
+    if not content:
+        return {'error': 'Invalid Content'}, 400
+    
+    
+    if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+        return {'error': 'Invalid Email: Please provide a valid email address.'}, 400
+
+    
     timeline_post = TimelinePost.create(name=name, email=email, content=content)
 
     return model_to_dict(timeline_post)
 
 @app.route('/api/timeline_post', methods=['GET'])
 def get_time_line_post():
-    return {
-        'timeline_posts': [
-            model_to_dict(p)
-            for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
-        ]
-    }
+   
+    timeline_posts = [
+        model_to_dict(p)
+        for p in TimelinePost.select().order_by(TimelinePost.created_at.desc())
+    ]
+
+    if not timeline_posts:
+        return {'timeline_posts': len(timeline_posts)}
+
+    return {'timeline_posts': timeline_posts}
+    
+    
 
 # @app.route('/api/timeline_post', methods=['DELETE'])
 # def delete_time_line_post():
@@ -78,3 +107,4 @@ def delete_timeline_post(post_id):
 if __name__ == '__main__':
     app.run(debug=True)
 #host='0.0.0.0',port=5000
+
