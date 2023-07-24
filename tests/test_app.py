@@ -55,24 +55,24 @@ class AppTestCase(unittest.TestCase):
         assert '<input class="form-control" type="text" id="email" name="email" placeholder="Your Email">' in html
 
 
-    # def test_malformed_timeline_post(self):
-    #     # POST request missing name
-    #     response = self.client.post("/api/timeline_post", data={"email": "jooe@ex.com", "content": "Hii, I\'m John Doe"})
-    #     assert response.status_code == 400
-    #     html = response.get_data(as_text=True)
-    #     assert "Invalid Name" in html
+    def test_malformed_timeline_post(self):
+        # POST request missing name
+        response = self.client.post("/api/timeline_post", data={"email": "jooe@ex.com", "content": "Hii, I\'m John Doe"})
+        assert response.status_code == 400
+        html = response.get_data(as_text=True)
+        assert "Invalid Name" in html
 
-    #     # POST content empty container
-    #     response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "jdoe@ex.com", "content": ""})
-    #     assert response.status_code == 400
-    #     html = response.get_data(as_text=True)
-    #     assert "Invalid Content" in html
+        # POST content empty container
+        response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "jdoe@ex.com", "content": ""})
+        assert response.status_code == 400
+        html = response.get_data(as_text=True)
+        assert "Invalid Content" in html
 
-    #     # POST request with malformed email
-    #     response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "joee-ex-com", "content": "Hi, I\'m John Doe"})
-    #     assert response.status_code == 400
-    #     html = response.get_data(as_text=True)
-    #     assert "Invalid Email" in html
+        # POST request with malformed email
+        response = self.client.post("/api/timeline_post", data={"name": "John Doe", "email": "joee-ex-com", "content": "Hi, I\'m John Doe"})
+        assert response.status_code == 400
+        html = response.get_data(as_text=True)
+        assert "Invalid Email" in html
 
     
 
