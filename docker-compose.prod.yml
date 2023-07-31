@@ -17,12 +17,13 @@ services:
       - .env
     volumes:
       - mydatabase:/var/lib/mysql
+    
   nginx:
     container_name: nginx
     image: jonasal/nginx-certbot
     restart: always
     environment:
-      - CERTBOT_EMAIL=name@example.com
+      - CERTBOT_EMAIL=tapaswini.kodavanti@gmail.com
     ports:
       - 80:80
       - 443:443
