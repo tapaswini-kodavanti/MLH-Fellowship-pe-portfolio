@@ -1,10 +1,11 @@
 from flask import Flask, render_template, send_from_directory, request
 from peewee import *
 from playhouse.shortcuts import model_to_dict
+from dotenv import load_dotenv
+from data import data
 import os
 import datetime
 import re
-from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -37,7 +38,7 @@ mydb.create_tables([TimelinePost])
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', data=data)
 
 
 @app.route('/places_visited')
