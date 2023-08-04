@@ -14,7 +14,7 @@ class AppTestCase(unittest.TestCase):
         html = response.get_data(as_text=True)
         assert "<title>MLH Fellow</title>" in html
         assert '<div class="divider-custom divider-light intro"></div>' in html
-        assert '<img class="masthead-avatar mb-5" src="assets/img/logo.jpg" alt="..." />' in html
+        assert '<img class="masthead-avatar mb-5" src="../static/assets/img/logo.jpg" alt="..." />' in html
         assert '<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="/places_visited">Extra</a></li>' in html
         assert '<button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>' in html
     
