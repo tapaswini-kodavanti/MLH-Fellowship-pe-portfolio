@@ -49,7 +49,7 @@ def timeline():
     return render_template('timeline.html')
 
 
-@app.route('/static/assets/<path:path>')
+@app.route('/app/static/assets/<path:path>')
 def send_static(path):
     return send_from_directory('assets', path)
 
@@ -58,8 +58,6 @@ def post_time_line_post():
     name = request.form.get('name')
     email = request.form.get('email')
     content = request.form.get('content')
-
-    
 
     if not name:
         return {'error': 'Invalid Name'}, 400
@@ -91,10 +89,6 @@ def get_time_line_post():
     return {'timeline_posts': timeline_posts}
     
     
-
-# @app.route('/api/timeline_post', methods=['DELETE'])
-# def delete_time_line_post():
-#     return None
 @app.route('/api/timeline_post/<int:post_id>', methods=['DELETE'])
 def delete_timeline_post(post_id):
     try:
@@ -106,5 +100,3 @@ def delete_timeline_post(post_id):
 
 if __name__ == '__main__':
     app.run(debug=True)
-#host='0.0.0.0',port=5000
-
