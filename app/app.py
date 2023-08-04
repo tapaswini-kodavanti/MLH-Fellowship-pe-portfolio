@@ -49,7 +49,7 @@ def timeline():
     return render_template('timeline.html')
 
 
-@app.route('/assets/<path:path>')
+@app.route('/static/assets/<path:path>')
 def send_static(path):
     return send_from_directory('assets', path)
 
