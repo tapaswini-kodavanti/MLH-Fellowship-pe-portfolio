@@ -16,10 +16,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Steup Python
+      - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.6.8'
+          python-version: '3.11.3'
         
       - name: Setup Python Virtual Environment
         run: python -m venv python3-virtualenv
